@@ -172,22 +172,52 @@ def list_quizzes(quizzes):
         print(f"[{number}] {quiz.question}")
     print("-" * 40)
 
+def calc_score(correct, total):
+    """맞힌 개수를 100점 만점 점수로 바꿔 돌려준다."""
+    return int(correct / total * 100)
+
+
+def update_best_score(best_score, correct, total):
+    """이번 점수가 최고 점수보다 높으면 갱신한 최고 점수를 돌려준다."""
+    score = calc_score(correct, total)
+    if best_score is None or score > best_score:
+        print("🎉 새로운 최고 점수입니다!")
+        return score
+    return best_score
+
+
+def play_and_record(quizzes, best_score):
+    """퀴즈를 풀고, 결과를 반영한 최고 점수를 돌려준다."""
+    result = play_quiz(quizzes)
+    if result is None:  # 퀴즈가 없어서 풀지 못한 경우
+        return best_score
+    correct, total = result
+    return update_best_score(best_score, correct, total)
+
+
+def show_best_score(best_score):
+    """최고 점수를 보여준다."""
+    if best_score is None:
+        print("⚠️ 아직 퀴즈를 풀지 않았습니다. 먼저 퀴즈를 풀어 보세요.")
+    else:
+        print(f"\n🏆 최고 점수: {best_score}점\n")
+
 
 def main():
     """프로그램의 시작점. 메뉴를 반복해서 보여준다."""
-    quizzes = create_default_quizzes()
+    quizzes, best_score = create_default_quizzes(), None
     try:
         while True:
             show_menu()
             choice = read_int("선택: ", 1, 5)
             if choice == 1:
-                play_quiz(quizzes)
+                best_score = play_and_record(quizzes, best_score)
             elif choice == 2:
                 add_quiz(quizzes)
             elif choice == 3:
                 list_quizzes(quizzes)
             elif choice == 4:
-                print("점수 확인은 준비 중입니다.")
+                show_best_score(best_score)
             else:
                 print("프로그램을 종료합니다.")
                 break
