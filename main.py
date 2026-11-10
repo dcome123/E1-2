@@ -154,3 +154,30 @@ def add_quiz(quizzes):
     print("\n📌 새로운 퀴즈를 추가합니다.\n")
     question = read_text("문제를 입력하세요: ")
     choices = []
+
+
+
+def main():
+    """프로그램의 시작점. 메뉴를 반복해서 보여준다."""
+    quizzes = create_default_quizzes()
+    try:
+        while True:
+            show_menu()
+            choice = read_int("선택: ", 1, 5)
+            if choice == 1:
+                play_quiz(quizzes)
+            elif choice == 2:
+                add_quiz(quizzes)
+            elif choice == 3:
+                print("퀴즈 목록은 준비 중입니다.")
+            elif choice == 4:
+                print("점수 확인은 준비 중입니다.")
+            else:
+                print("프로그램을 종료합니다.")
+                break
+    except (KeyboardInterrupt, EOFError):
+        print("\n입력이 중단되어 안전하게 종료합니다.")
+
+
+if __name__ == "__main__":
+    main()
