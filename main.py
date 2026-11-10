@@ -111,6 +111,16 @@ def read_int(prompt, low, high):
         return number
 
 
+def read_text(prompt):
+    """빈 입력이 아닌 글자를 입력받을 때까지 계속 묻는다."""
+    while True:
+        text = input(prompt).strip()
+        if text == "":
+            print("⚠️ 빈 입력입니다. 내용을 입력하세요.")
+            continue
+        return text
+
+
 def play_quiz(quizzes):
     """퀴즈를 모두 출제하고 (맞힌 개수, 전체 개수)를 돌려준다."""
     if not quizzes:
@@ -139,27 +149,8 @@ def play_quiz(quizzes):
     return correct, total
 
 
-def main():
-    """프로그램의 시작점. 메뉴를 반복해서 보여준다."""
-    quizzes = create_default_quizzes()
-    try:
-        while True:
-            show_menu()
-            choice = read_int("선택: ", 1, 5)
-            if choice == 1:
-                play_quiz(quizzes)
-            elif choice == 2:
-                print("퀴즈 추가는 준비 중입니다.")
-            elif choice == 3:
-                print("퀴즈 목록은 준비 중입니다.")
-            elif choice == 4:
-                print("점수 확인은 준비 중입니다.")
-            else:
-                print("프로그램을 종료합니다.")
-                break
-    except (KeyboardInterrupt, EOFError):
-        print("\n입력이 중단되어 안전하게 종료합니다.")
-
-
-if __name__ == "__main__":
-    main()
+def add_quiz(quizzes):
+    """새 퀴즈를 입력받아 목록에 추가한다."""
+    print("\n📌 새로운 퀴즈를 추가합니다.\n")
+    question = read_text("문제를 입력하세요: ")
+    choices = []
