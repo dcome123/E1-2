@@ -172,3 +172,6 @@ E1-2/
 | 입력 규칙 | `read_int`, `read_text` |
 | 기본 퀴즈 내용·개수 | `create_default_quizzes` |
 | 메뉴 추가·변경 | `show_menu`, `run` |
+## clone / pull 실행 화면
+
+![clone과 pull 실행 화면](docs/screenshots/clone_pull.png)
