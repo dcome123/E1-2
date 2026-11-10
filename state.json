@@ -79,6 +79,16 @@
                 "그려 놓은 그림"
             ],
             "answer": 1
+        },
+        {
+            "question": "인공지능의 약자는?",
+            "choices": [
+                "AI",
+                "PC",
+                "TV",
+                "CD"
+            ],
+            "answer": 1
         }
     ],
     "best_score": 100
