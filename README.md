@@ -91,3 +91,20 @@ E1-2/
 
 파일이 없으면 기본 퀴즈로 시작하고, 손상되었으면 안내 후 기본 퀴즈로 초기화합니다.
 > clone/pull 실습으로 추가한 한 줄입니다.
+
+## 실행 화면
+
+### 메뉴
+![메뉴](docs/screenshots/menu.png)
+
+### 퀴즈 풀기
+![퀴즈 풀기](docs/screenshots/play.png)
+
+### 퀴즈 추가
+![퀴즈 추가](docs/screenshots/add_quiz.png)
+
+### 퀴즈 목록
+![퀴즈 목록](docs/screenshots/list.png)
+
+### 점수 확인
+![점수 확인](docs/screenshots/score.png)
