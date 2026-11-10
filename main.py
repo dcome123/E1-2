@@ -154,7 +154,11 @@ def add_quiz(quizzes):
     print("\n📌 새로운 퀴즈를 추가합니다.\n")
     question = read_text("문제를 입력하세요: ")
     choices = []
-
+    for number in range(1, 5):
+        choices.append(read_text(f"선택지 {number}: "))
+    answer = read_int("정답 번호 (1-4): ", 1, 4)
+    quizzes.append(Quiz(question, choices, answer))
+    print("\n✅ 퀴즈가 추가되었습니다!\n")
 
 
 def main():
